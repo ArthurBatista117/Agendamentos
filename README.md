@@ -12,7 +12,7 @@ Lembretes automatizados por e-mail/SMS.
 🏗️ Tecnologias Utilizadas
 Backend: Node.js + Express
 
-Banco de Dados: PostgreSQL com ORM (TypeORM ou Prisma)
+Banco de Dados: PostgreSQL com ORM (TypeORM, Prisma, Sequelize)
 
 Agendamento de Tarefas: Node-cron
 
