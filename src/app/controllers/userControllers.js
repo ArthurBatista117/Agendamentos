@@ -48,14 +48,10 @@ class userControllers {
         try{
             const id = req.params.id;
             const {UserNome, UserEmail, UserSenha} = req.body;
-            const userUpdated = await user.update({
-                    where: id
-                },
-                {
-                    nome: UserNome,
-                    email: UserEmail,
-                    senha: UserSenha
-                });
+            const userUpdated = await user.update(
+                    { nome: UserNome, email: UserEmail, senha: UserSenha },
+                    { where: { id } }
+                );
             return res.status(200).json(userUpdated);
         } catch(error){
             defaultMessageError(res, error);
