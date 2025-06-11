@@ -1,11 +1,13 @@
-const { Router } = require('express');
-const UserRouter = Router();
-const userControllers = require('../app/controllers/userControllers');
+const express = require('express');
+const router = express.Router();
+const userController = require('../app/controllers/userControllers');
+const { userCreateValidation, userUpdateValidation } = require('../validators/userControllerValidator');
+const handleValidation = require('../middlewares/handleValidation');
 
-UserRouter.get('/', userControllers.index)
-UserRouter.get('/:id', userControllers.show)
-UserRouter.post('/', userControllers.create)
-UserRouter.put('/:id', userControllers.update)
-UserRouter.delete('/:id', userControllers.destroy)
+router.get('/', userController.index);
+router.get('/:id', userController.show);
+router.post('/', userCreateValidation, handleValidation, userController.create);
+router.put('/:id', userUpdateValidation, handleValidation, userController.update);
+router.delete('/:id', userController.destroy);
 
-module.exports = UserRouter;
+module.exports = router;

@@ -9,6 +9,7 @@ class userControllers {
     //retorna todos os usuários
     async index(req, res) {
         try{
+
             const users = await user.findAll();
             return res.status(200).json(users);
         } catch(error){
