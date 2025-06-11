@@ -28,7 +28,7 @@ const userControllers = require('../src/app/controllers/userControllers');
 
 const app = express();
 app.use(express.json());
-app.use('/usuarios/', userRoutes);
+app.use('/', userRoutes);
 
 describe('Testando rotas de Usuários', () =>{
 
@@ -49,7 +49,9 @@ describe('Testando rotas de Usuários', () =>{
     });
 
     it('Testando a rota POST',async () =>{
-        const response = await request(app).post('/usuarios');
+        const response = await request(app).post('/usuarios').send(
+          { nome: 'Test User', email: 'test@example.com', senha: 'teste123'}
+        );
 
         expect(response.status).toBe(201);
         expect(response.body).toEqual({ message: 'Mocked user data' })
