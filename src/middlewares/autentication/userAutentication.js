@@ -4,7 +4,6 @@ require('dotenv').config();
 const verifyJWT = (req, res, next) =>{
     const authHeaders = req.headers['authorization'];
     
-    // console.log(token);
     if(!authHeaders){
         console.log('Token inexistente');
         return res.status(403).json({message: 'token inexistente'});
