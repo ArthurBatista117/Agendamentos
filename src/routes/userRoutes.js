@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../app/controllers/userControllers');
-const { userCreateValidation, userUpdateValidation } = require('../validators/userControllerValidator');
-const handleValidation = require('../middlewares/handleValidation');
+const { userCreateValidation, userUpdateValidation } = require('../sanitization/userControllerValidator');
+const handleValidation = require('../middlewares/validators/handleValidation');
 
 router.get('/usuarios', userController.index);
 router.get('/usuarios/:id', userController.show);
